@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
     devenv = {
       url = "github:cachix/devenv";
@@ -39,11 +39,18 @@
           inherit inputs pkgs;
           modules = [
             {
-              packages = [pkgs.trunk pkgs.leptosfmt];
+              packages = with pkgs; [leptosfmt cargo-generate sass cargo-edit cargo-leptos codespell];
               languages.rust = {
                 enable = true;
-                channel = "stable";
+                channel = "nightly";
                 targets = ["wasm32-unknown-unknown"];
+              };
+
+              services.postgres = {
+                enable = true;
+                package = pkgs.postgresql_16;
+                initialDatabases = [{name = "mydb";}];
+                listen_addresses = "localhost";
               };
             }
           ];
