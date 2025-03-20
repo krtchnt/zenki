@@ -1,20 +1,37 @@
 [package]
 name = "zenki"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 
+[lints.rust]
+unsafe_op_in_unsafe_fn = "forbid"
+# dead_code = "allow"
+
+[lints.clippy]
+multiple_unsafe_ops_per_block = "forbid"
+undocumented_unsafe_blocks = "forbid"
+enum_glob_use = "forbid"
+unwrap_used = "forbid"
+try_err = "forbid"
+pedantic = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+
 [dependencies]
-leptos = { version = "0.7.7", features = ["nightly"] }
-leptos_router = { version = "0.7.7", features = ["nightly"] }
-axum = { version = "0.7", optional = true }
+leptos = { version = "0.7.8", features = ["nightly"] }
+leptos_router = { version = "0.7.8", features = ["nightly"] }
+axum = { version = "0.8", optional = true }
 console_error_panic_hook = { version = "0.1", optional = true}
-leptos_axum = { version = "0.7.7", optional = true }
-leptos_meta = { version = "0.7.7" }
+leptos_axum = { version = "0.7.8", optional = true }
+leptos_meta = { version = "0.7.8" }
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 wasm-bindgen = { version = "=0.2.100", optional = true }
+serde = { version = "1.0.219", features = ["derive"] }
+tracing = "0.1.41"
+codee = "0.3.0"
+leptos-use = { version = "0.15.7" }
 
 [features]
 hydrate = [
@@ -29,6 +46,8 @@ ssr = [
     "leptos/ssr",
     "leptos_meta/ssr",
     "leptos_router/ssr",
+    "leptos-use/ssr",
+    "leptos-use/axum"
 ]
 
 # Defines a size-optimized profile for the WASM bundle in release mode

@@ -39,7 +39,7 @@
           inherit inputs pkgs;
           modules = [
             {
-              packages = with pkgs; [leptosfmt cargo-generate sass cargo-edit cargo-leptos codespell];
+              packages = with pkgs; [leptosfmt cargo-generate sass cargo-edit cargo-leptos codespell sqlx-cli];
               languages.rust = {
                 enable = true;
                 channel = "nightly";
@@ -49,8 +49,14 @@
               services.postgres = {
                 enable = true;
                 package = pkgs.postgresql_16;
-                initialDatabases = [{name = "mydb";}];
+                initialDatabases = [{name = "zenki";}];
                 listen_addresses = "localhost";
+              };
+
+              processes = {
+                cargo-leptos-watch.exec = ''
+                  cargo leptos watch
+                '';
               };
             }
           ];

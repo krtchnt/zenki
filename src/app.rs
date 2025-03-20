@@ -1,8 +1,14 @@
+#![allow(clippy::must_use_candidate)]
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
+use leptos_meta::{MetaTags, Stylesheet, provide_meta_context};
 use leptos_router::{
-    components::{Route, Router, Routes},
     StaticSegment,
+    components::{Route, Router, Routes},
+};
+
+use crate::{
+    page::{Home, Login, Main, Register},
+    route::{HOME, LOGIN, MAIN, REGISTER},
 };
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
@@ -33,29 +39,16 @@ pub fn App() -> impl IntoView {
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         <Stylesheet id="leptos" href="/pkg/zenki.css"/>
 
-        // sets the document title
-        <Title text="Welcome to Leptos"/>
-
         // content for this welcome page
         <Router>
             <main>
                 <Routes fallback=|| "Page not found.".into_view()>
-                    <Route path=StaticSegment("") view=HomePage/>
+                    <Route path=StaticSegment(HOME) view=Home/>
+                    <Route path=StaticSegment(LOGIN) view=Login/>
+                    <Route path=StaticSegment(REGISTER) view=Register/>
+                    <Route path=StaticSegment(MAIN) view=Main/>
                 </Routes>
             </main>
         </Router>
-    }
-}
-
-/// Renders the home page of your application.
-#[component]
-fn HomePage() -> impl IntoView {
-    // Creates a reactive value to update the button
-    let count = RwSignal::new(0);
-    let on_click = move |_| *count.write() += 1;
-
-    view! {
-        <h1>"Welcome to Leptos!"</h1>
-        <button on:click=on_click>"Click Me: " {count}</button>
     }
 }
