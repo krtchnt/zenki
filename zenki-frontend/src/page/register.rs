@@ -1,24 +1,17 @@
-use leptos::{prelude::*, task};
+use leptos::{prelude::*, task::spawn_local};
 use leptos_meta::Title;
 
 use crate::auth::register;
 
 #[component]
 pub fn Register() -> impl IntoView {
-    let (cookie, _) = crate::auth::get_login_session();
-    if cookie.get().is_some() {
-        task::spawn(async {
-            let _ = crate::route::redirect_to_main().await;
-        });
-    }
-
     let username = RwSignal::new(String::new());
     let password = RwSignal::new(String::new());
     let password_confirm = RwSignal::new(String::new());
 
     let on_submit = move |ev: leptos::ev::SubmitEvent| {
         ev.prevent_default();
-        task::spawn_local(async move {
+        spawn_local(async move {
             let _ = register(username.get(), password.get(), password_confirm.get()).await;
         });
     };

@@ -1,34 +1,42 @@
+# Zenki
+
+♨️ A small web application simulating a game distribution service (e.g. Steam).
+
+> [!IMPORTANT]
+> This project is developed under the *01204351 Database Systems I* course of **Department of Computer Engineering**, **Faculity of Engineering**, **Kasetsart University**.
+
+> **Project Developers**:
+> * *Kritchanat Thanapiphatsiri (6610501955)*
+> * *Tanapatr Karnjanarujivut (6610505403)*
+> * *Warut Massuwan (6610505560)*
+
 <picture>
     <source srcset="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_Solid_White.svg" media="(prefers-color-scheme: dark)">
     <img src="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_RGB.svg" alt="Leptos Logo">
 </picture>
 
-# Leptos Axum Starter Template
+This project was based on a template for use with the [Leptos](https://github.com/leptos-rs/leptos) web framework and the [cargo-leptos](https://github.com/akesson/cargo-leptos) tool using [Axum](https://github.com/tokio-rs/axum).
 
-This is a template for use with the [Leptos](https://github.com/leptos-rs/leptos) web framework and the [cargo-leptos](https://github.com/akesson/cargo-leptos) tool using [Axum](https://github.com/tokio-rs/axum).
+## Installation
 
-## Creating your template repo
+If you are running a Nix system, simply run `nix develop --impure`. Otherwise, follow the instructions below.
 
-If you don't have `cargo-leptos` installed you can install it with
+First, Install `cargo-leptos` via running:
 
 ```bash
 cargo install cargo-leptos --locked
 ```
 
-Then run
-```bash
-cargo leptos new --git https://github.com/leptos-rs/start-axum
+Then clone the repository, and change the working directory into `zenki`.
+
+You will also need a running PostgreSQL server. To apply migrations, `cd` to `database`, then run `cargo install sqlx-cli` as well as `cargo sqlx database setup`.
+
+Create an `.env` file containing the database connection string like so. Edit the angle bracketed segments to your database's parameters accordingly.
+```
+DATABASE_URL='postgresql://<username>:<password>@<host>:<port>/<database_name>'
 ```
 
-to generate a new project template.
-
-```bash
-cd zenki
-```
-
-to go to your newly created project.
-Feel free to explore the project structure, but the best place to start with your application code is in `src/app.rs`.
-Additionally, Cargo.toml may need updating as new versions of the dependencies are released, especially if things are not working after a `cargo update`.
+and everything should be ready.
 
 ## Running your project
 

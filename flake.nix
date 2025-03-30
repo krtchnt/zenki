@@ -55,7 +55,7 @@
 
               processes = {
                 cargo-leptos-watch.exec = ''
-                  cargo leptos watch
+                  RUSTFLAGS=-Cdebuginfo=0 cargo leptos watch
                 '';
               };
             }

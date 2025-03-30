@@ -1,0 +1,26 @@
+[package]
+name = "zenki-backend"
+version = "1.0.0-rc.1"
+edition = "2024"
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "forbid"
+
+[lints.clippy]
+multiple_unsafe_ops_per_block = "forbid"
+undocumented_unsafe_blocks = "forbid"
+enum_glob_use = "forbid"
+unwrap_used = "forbid"
+try_err = "forbid"
+pedantic = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+
+[dependencies]
+zenki-util = { path = "../zenki-util" }
+argon2 = { version = "0.5.3", features = ["std"] }
+dotenvy = "0.15.7"
+log = "0.4.27"
+serde = "1.0.219"
+sqlx = { version = "0.8.3", features = ["postgres", "runtime-tokio", "time"] }
+thiserror = "2.0.12"
+time = { version = "0.3.41", features = ["serde"] }
