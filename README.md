@@ -8,7 +8,7 @@
 > **Project Developers**:
 > * *Kritchanat Thanapiphatsiri (6610501955)*
 > * *Tanapatr Karnjanarujivut (6610505403)*
-> * *Warut Massuwan (6610505560)*
+> * *นายวรุตม์ มาศสุวรรณ,Warut Massuwan (6610505560)*
 
 <picture>
     <source srcset="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_Solid_White.svg" media="(prefers-color-scheme: dark)">
