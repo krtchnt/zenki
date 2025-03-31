@@ -6,9 +6,9 @@
 > This project is developed under the *01204351 Database Systems I* course of **Department of Computer Engineering**, **Faculity of Engineering**, **Kasetsart University**.
 
 > **Project Developers**:
-> * *Kritchanat Thanapiphatsiri (6610501955)*
-> * *Tanapatr Karnjanarujivut (6610505403)*
-> * *นายวรุตม์ มาศสุวรรณ,Warut Massuwan (6610505560)*
+> * *กฤชณัท ธนพิพัฒนศิริ, Kritchanat Thanapiphatsiri (6610501955)*
+> * *ธนภัทร กาญจนรุจิวุฒิ, Tanapatr Karnjanarujivut (6610505403)*
+> * *วรุตม์ มาศสุวรรณ,   Warut Massuwan (6610505560)*
 
 <picture>
     <source srcset="https://raw.githubusercontent.com/leptos-rs/leptos/main/docs/logos/Leptos_logo_Solid_White.svg" media="(prefers-color-scheme: dark)">
